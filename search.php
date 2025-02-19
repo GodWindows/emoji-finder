@@ -28,10 +28,11 @@ if (isset($_GET['hint']) && $_GET['hint']!="") {
     curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
     curl_setopt($ch, CURLOPT_POST, true);
     curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); //If you don't have SSL enabled on your server 
 
+    //If you don't have SSL enabled on your server 
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); 
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
 
-    $response = curl_exec($ch);
 
     $response = curl_exec($ch);
 

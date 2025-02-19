@@ -1,6 +1,6 @@
 async function search(hint) {
   return new Promise((resolve, reject) => {
-    $.get('http://localhost:8000/search.php?hint=' + hint, function(response) {
+    $.get('./search.php?hint=' + hint, function(response) {
       console.log(response);
       resolve(response);  // Resolve with the response
     }).fail(function(jqXHR, textStatus, errorThrown) {
@@ -31,6 +31,8 @@ $(document).ready(function() {
       $("input, #submit").hide();
       var hint = $('#hint').val();
       
+      $("#result").show();
+      $("#result").html("Wait..."); 
       // Use the async search function and handle the response
       search(hint).then(
         (response) => {
